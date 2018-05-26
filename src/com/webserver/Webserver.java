@@ -80,7 +80,8 @@ public class Webserver {
 
                     /*Skriver den standard OK HTTP Response*/
                     DOS.writeBytes("HTTP/1.0 200 OK\r\n");
-                    /*Skriver den standard OK HTTP Response*/
+
+                    /*Skriver en tilføjelse hvis der er et billede eller et favicon*/
                     if(fileName.endsWith(".jpg")){
                         DOS.writeBytes("Content-Type:image/jpeg\r\n");
                     }
@@ -90,15 +91,29 @@ public class Webserver {
                     if(fileName.endsWith(".ico")){
                         DOS.writeBytes("Content-Type:image/ico\r\n");
                     }
-                    DOS.writeBytes("Content-Length:"+fileByteLength+"\r\n");
-                    DOS.writeBytes("\r\n");// er et krav fra protokollen
+
+                    /*SIMULERING AF KOMMANDOER!*/
+                    System.out.println("Sådan ser vores response ud:");
+                    System.out.println("============================");
+                    System.out.print("Content-Length:"+fileByteLength+"\r\n");
+                    System.out.print("\r\n");
+                    for (int i = 0; i < 10; i++){
+                        System.out.println("(Byte no " + i + ":) " + Integer.toHexString(fileByteArray[i]));
+                    }
+                    System.out.println("(many many more bytes....)");
+                    System.out.print("\r\n");
+                    System.out.println("==============");
+
+
+                    DOS.writeBytes("Content-Length:"+fileByteLength+"\r\n"); // Her kommer en fil der x lang
+                    DOS.writeBytes("\r\n");                     // er et krav fra protokollen ("ny linie")
                     DOS.write(fileByteArray,0,fileByteLength); // her sendes filen
-                    DOS.writeBytes("\r\n");
+                    DOS.writeBytes("\r\n");                      // er et krav fra protokollen ("ny linie")
 
 
                 }else {
                     System.out.println("bad request (not a GET)");
-                    DOS.writeBytes("HTTP/1.0 400 unknown request, what are you doing?");
+                    DOS.writeBytes("HTTP/1.0 400 unknown request");
                     DOS.writeBytes("\r\n");
                 }
                 DOS.close();
