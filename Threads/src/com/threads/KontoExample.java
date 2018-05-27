@@ -35,6 +35,16 @@ public class KontoExample {
         System.out.println("Her er penge balancen på den synkroniserede konto: ");
         konto.printAmount();
         System.out.println();
+
+        /*Igen, igen nu med en Lock*/
+
+        konto = new KontoMedLock();
+        addWithTwentyThreads();
+        System.out.println();
+        System.out.println("Her er penge balancen på den konto med en LÅS: ");
+        konto.printAmount();
+        System.out.println();
+
     }
 
     private void addWithTwentyThreads(){
