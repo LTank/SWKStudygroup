@@ -17,7 +17,7 @@ public class KontoExample {
         System.out.println();
 
         konto = new KontoUdenSync();
-        addWithTwentyThreads();
+        addWithTenThreads();
         System.out.println();
         System.out.println("Her er penge balancen på den usynkroniserede konto: ");
         konto.printAmount();
@@ -30,7 +30,7 @@ public class KontoExample {
         /*Igen, nu med syncronized keyword*/
 
         konto = new KontoMedSync();
-        addWithTwentyThreads();
+        addWithTenThreads();
         System.out.println();
         System.out.println("Her er penge balancen på den synkroniserede konto: ");
         konto.printAmount();
@@ -39,7 +39,7 @@ public class KontoExample {
         /*Igen, igen nu med en Lock*/
 
         konto = new KontoMedLock();
-        addWithTwentyThreads();
+        addWithTenThreads();
         System.out.println();
         System.out.println("Her er penge balancen på den konto med en LÅS: ");
         konto.printAmount();
@@ -47,7 +47,7 @@ public class KontoExample {
 
     }
 
-    private void addWithTwentyThreads(){
+    private void addWithTenThreads(){
         executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < 10; i++){
             executorService.execute(new AddMoneyTask(konto));
