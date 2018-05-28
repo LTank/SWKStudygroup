@@ -16,9 +16,11 @@ public class Main {
         // Sets up our two threads
         Thread consumerThread = new Thread(consumer);
         Thread producerThread = new Thread(producer);
+        Thread producerThread2 = new Thread(producer);
 
         // Starts our threads
         producerThread.start();
+        producerThread2.start();
         consumerThread.start();
 
     }
