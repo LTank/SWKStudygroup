@@ -9,27 +9,41 @@ public class Main {
     public static final String ANSI_WHITE = "\u001B[37m";
 
     public static void main(String[] args) {
-        Person lilleIda = new Person("Ida", 10);
-        Person farligeKirsten = new Person("Kirsten", 20);
+        Person lilleIda = new Person("Ida", 17);
+        Person farligeKirsten = new Person("Kirsten", 49);
 
         Car teslaRoadster = new Car();
 
-        System.out.println(ANSI_GREEN +"Nu går vi alle til køreprøve!");
+        System.out.println(ANSI_GREEN +"==Nu går vi alle til køreprøve!==");
         lilleIda.grantDriversLicense();
         farligeKirsten.grantDriversLicense();
 
-        System.out.println("\nNu vil alle prøve at køre i bil!");
+        System.out.println(ANSI_GREEN +"\n==Nu vil alle prøve at køre i bil!==");
         teslaRoadster.putInDriversSeat(lilleIda);
         teslaRoadster.drive();
 
         teslaRoadster.putInDriversSeat(farligeKirsten);
         teslaRoadster.drive();
+
+        System.out.println(ANSI_GREEN + "\n==Kirsten er lidt af en fartbølle!==");
         farligeKirsten.revokeDriversLicense();
         teslaRoadster.drive();
 
-        System.out.println("\nNu tager kirsten til køreprøve igen!");
+        System.out.println(ANSI_GREEN + "\n==Nu tager kirsten til køreprøve igen!==");
         farligeKirsten.grantDriversLicense();
         teslaRoadster.drive();
+
+        System.out.println(ANSI_GREEN + "\n==Nu er der gået et år og Ida går til køreprøve igen!==");
+        lilleIda.happyBirthDay();
+        lilleIda.grantDriversLicense();
+
+        teslaRoadster.putInDriversSeat(lilleIda);
+        teslaRoadster.drive();
+
+
+
+
+
 
     }
 }

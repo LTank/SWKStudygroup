@@ -35,4 +35,9 @@ public class Person {
     public String getName(){
         return name;
     }
+
+    public void happyBirthDay(){
+        age++;
+        System.out.println(ANSI_RED + "Tillykke med din " + age + "års fødselsdag " + name + "! Hurra Hurra Hurra!");
+    }
 }
