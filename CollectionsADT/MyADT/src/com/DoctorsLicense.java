@@ -3,8 +3,8 @@ package com;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class DoctorsLicense implements License<FieldsOfDoctorKnowledge> {
-    private ArrayList<FieldsOfDoctorKnowledge> fieldsOfKnowledge = new ArrayList<>();
+public class DoctorsLicense implements License<MedicalFields> {
+    private ArrayList<MedicalFields> fieldsOfKnowledge = new ArrayList<>();
     private String lastName;
 
     public DoctorsLicense(String lastName) {
@@ -12,7 +12,7 @@ public class DoctorsLicense implements License<FieldsOfDoctorKnowledge> {
     }
 
     @Override
-    public String grantLicenseFor(FieldsOfDoctorKnowledge field) {
+    public String grantLicenseFor(MedicalFields field) {
         if(!fieldsOfKnowledge.contains(field)){
             fieldsOfKnowledge.add(field);
         }
@@ -20,7 +20,7 @@ public class DoctorsLicense implements License<FieldsOfDoctorKnowledge> {
     }
 
     @Override
-    public String revokeLicenseFor(FieldsOfDoctorKnowledge field) {
+    public String revokeLicenseFor(MedicalFields field) {
         if(fieldsOfKnowledge.contains(field)){
             fieldsOfKnowledge.remove(field);
         }
@@ -28,7 +28,7 @@ public class DoctorsLicense implements License<FieldsOfDoctorKnowledge> {
     }
 
     @Override
-    public boolean haveLicenseFor(FieldsOfDoctorKnowledge field) {
+    public boolean haveLicenseFor(MedicalFields field) {
         if(fieldsOfKnowledge.contains(field)){
             return true;
         } else {
@@ -53,6 +53,6 @@ public class DoctorsLicense implements License<FieldsOfDoctorKnowledge> {
     @Override
     public String toString(){
 
-        return ownerOfLicense() + " : " + fieldsOfKnowledge.stream().map(Enum::toString).collect(Collectors.joining(" ")) + " : " + isValid();
+        return ownerOfLicense() + " : " + fieldsOfKnowledge.stream().map(Enum::toString).map(String::toLowerCase).collect(Collectors.joining(" ")) + " : " + isValid();
     }
 }

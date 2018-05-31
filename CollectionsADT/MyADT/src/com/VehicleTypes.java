@@ -1,5 +1,5 @@
 package com;
 
-public enum DriversLicenseTypes {
+public enum VehicleTypes {
     PERSONBIL, LASTBIL
 }

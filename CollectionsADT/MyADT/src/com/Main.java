@@ -1,8 +1,8 @@
 package com;
 
 
-import static com.DriversLicenseTypes.*;
-import static com.FieldsOfDoctorKnowledge.*;
+import static com.VehicleTypes.*;
+import static com.MedicalFields.*;
 
 public class Main {
     public static final String ANSI_RED = "\u001B[31m";
