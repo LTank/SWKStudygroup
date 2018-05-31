@@ -30,40 +30,60 @@ public class Main {
     }
 
     public static void test(DriversLicense licenseToDrive, String color){
-        System.out.println(ANSI_BLUE+"============Kørekorts TEST===============");
-        System.out.println(color+"har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: " + licenseToDrive.haveLicenseFor(PERSONBIL));
-        System.out.println("Forsøger at give " + licenseToDrive.ownerOfLicense() + " et kørekort.");
-        System.out.println(licenseToDrive.grantLicenseFor(PERSONBIL));
+        System.out.println(color+"============Kørekorts TEST===============");
+
+        System.out.println(licenseToDrive+"\n");
+
+        System.out.println("Har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: ");
+        System.out.println(licenseToDrive.haveLicenseFor(PERSONBIL)+"\n");
+
+        System.out.println("Giver " + licenseToDrive.ownerOfLicense() + " et kørekort til PERSONBIL!");
+        licenseToDrive.grantLicenseFor(PERSONBIL);
+
+        System.out.println("Har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: ");
+        System.out.println(licenseToDrive.haveLicenseFor(PERSONBIL));
+
+        System.out.println(licenseToDrive);
+
         if(licenseToDrive.isValid()){
-            System.out.println("\n" + licenseToDrive.ownerOfLicense()+" har et gyldigt kørekort!");
-            System.out.println(licenseToDrive.grantLicenseFor(LASTBIL));
-            System.out.println("har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: " + licenseToDrive.haveLicenseFor(PERSONBIL));
-            System.out.println("har " + licenseToDrive.ownerOfLicense() + " lastbil kørekort?: " + licenseToDrive.haveLicenseFor(LASTBIL));
-            System.out.println(licenseToDrive.revokeLicenseFor(LASTBIL));
-            System.out.println("har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: " + licenseToDrive.haveLicenseFor(PERSONBIL));
+            System.out.println("Giver " + licenseToDrive.ownerOfLicense() + " et kørekort til LASTBIL!");
+            licenseToDrive.grantLicenseFor(LASTBIL);
+            System.out.println(licenseToDrive);
+            System.out.println("Fratager " + licenseToDrive.ownerOfLicense() + " hendes kørekort til LASTBIL!");
+            licenseToDrive.revokeLicenseFor(LASTBIL);
+            System.out.println(licenseToDrive);
+            System.out.println("Straffen er hård: det gjorde kortet ugyldigt! \nNu skal have godkendt hendes kort, det får hun nu.");
+            licenseToDrive.grantLicenseFor(PERSONBIL);
+            System.out.println(licenseToDrive);
+
         } else {
             System.out.println("\n" + licenseToDrive.ownerOfLicense() + " har ikke et gyldigt kørekort!");
         }
-        System.out.println(ANSI_RED + "=========Kørekorts TEST SLUT=============");
+        System.out.println("=========Kørekorts TEST SLUT=============");
     }
 
     public static void doctorTest(DoctorsLicense doctorsLicense, String color){
-        System.out.println(ANSI_BLUE+"============DOCTOR TEST===============");
-        System.out.println("kan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: " + doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
-        System.out.println("Forsøger at give " + doctorsLicense.ownerOfLicense() + " et en lægelicense.");
-        System.out.println(doctorsLicense.grantLicenseFor(ALMENPRAKSIS));
+        System.out.println(color + "============DOCTOR TEST===============");
+        System.out.println("\nKan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: ");
+        System.out.println(doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
+        System.out.println("Giver " + doctorsLicense.ownerOfLicense() + " en lægelicense til ALMENPRAKSIS:");
+        doctorsLicense.grantLicenseFor(ALMENPRAKSIS);
+        System.out.println(doctorsLicense);
         if(doctorsLicense.isValid()){
-            System.out.println("\n" + doctorsLicense.ownerOfLicense()+" har en gyldig lægelicense!");
-            System.out.println(doctorsLicense.grantLicenseFor(HJERTEOPERATION));
-            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: " + doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
-            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " foretage hjerteoperationer?: " + doctorsLicense.haveLicenseFor(HJERTEOPERATION));
-            System.out.println(doctorsLicense.revokeLicenseFor(HJERTEOPERATION));
-            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " foretage hjerteoperationer?: " + doctorsLicense.haveLicenseFor(HJERTEOPERATION));
-            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: " + doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
+
+            System.out.println("Giver " + doctorsLicense.ownerOfLicense() + " en lægelicense til HJERTEOPERATION:");
+            doctorsLicense.grantLicenseFor(HJERTEOPERATION);
+            System.out.println(doctorsLicense);
+
+            System.out.println("Skandale! " + doctorsLicense.ownerOfLicense() + " har stjålet organer!");
+            System.out.println("Fratager " + doctorsLicense.ownerOfLicense() + " lægelicensen til HJERTEOPERATIONER");
+            doctorsLicense.revokeLicenseFor(HJERTEOPERATION);
+
+            System.out.println(doctorsLicense);
 
         } else {
             System.out.println("\n" + doctorsLicense.ownerOfLicense() + " er ikke en rigtig læge!");
         }
-        System.out.println(ANSI_RED + "=========DOCTOR TEST SLUT=============");
+        System.out.println("=========DOCTOR TEST SLUT=============");
     }
 }

@@ -20,6 +20,8 @@ public class DriversLicense implements License<VehicleTypes> {
         if(owner.getAge() >= 18 && !types.contains(type)){
             types.add(type);
             makeValid();
+        } else if (owner.getAge() >= 18) {
+            makeValid();
         }
         return toString();
     }
@@ -28,9 +30,7 @@ public class DriversLicense implements License<VehicleTypes> {
         if(types.contains(type)){
             types.remove(type);
         }
-        if(types.isEmpty()){
-            makeInvalid();
-        }
+        makeInvalid();
         return toString();
     }
 
@@ -60,8 +60,17 @@ public class DriversLicense implements License<VehicleTypes> {
 
     @Override
     public String toString(){
-
-        return ownerOfLicense() + " : " + types.stream().map(String::valueOf).collect(Collectors.joining(" ")) + " : " + valid;
+        String delimiter = "==========================";
+        String newLine ="\n";
+        String cardHolder = "Kørekort for: " + ownerOfLicense() + " " + owner.getAge() + " år.";
+        String typevalidity = "Gyldig til følgende køretøjer: " + types.stream().map(String::valueOf).collect(Collectors.joining(" "));
+        String validLicense = "Gyldighed: " + valid;
+        return             newLine
+                + delimiter     + newLine
+                + cardHolder    + newLine
+                + typevalidity  + newLine
+                + validLicense  + newLine
+                + delimiter     + newLine;
     }
 
 }

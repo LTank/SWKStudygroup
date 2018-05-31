@@ -50,9 +50,17 @@ public class DoctorsLicense implements License<MedicalFields> {
         return "Dr. " + lastName;
     }
 
-    @Override
     public String toString(){
-
-        return ownerOfLicense() + " : " + fieldsOfKnowledge.stream().map(Enum::toString).map(String::toLowerCase).collect(Collectors.joining(" ")) + " : " + isValid();
+        String delimiter = "==========================";
+        String newLine ="\n";
+        String owner = "LægeLicense for: " + ownerOfLicense();
+        String typevalidity = "Gyldig til følgende faglige områder: " + fieldsOfKnowledge.stream().map(String::valueOf).collect(Collectors.joining(" "));
+        String validLicense = "Gyldighed: " + isValid();
+        return                    newLine
+                + delimiter     + newLine
+                + owner         + newLine
+                + typevalidity  + newLine
+                + validLicense  + newLine
+                + delimiter     + newLine;
     }
 }
