@@ -1,5 +1,9 @@
 package com;
 
+
+import static com.DriversLicenseTypes.*;
+import static com.FieldsOfDoctorKnowledge.*;
+
 public class Main {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -10,74 +14,56 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //I Danmark:
+        Person linda = new Person("Linda", "hansen", 18);
+        DriversLicense licenseToDrive = new DriversLicense(linda);
+        test(licenseToDrive, ANSI_PURPLE);
 
-        Billist lilleIda = new DanskBillist("Ida", "Hansen" ,17);
-        Billist hurtigeKirsten = new DanskBillist("Kirsten","Larsson", 49);
+        Person lillePer = new Person("Per", "Jensen", 17);
+        licenseToDrive = new DriversLicense(lillePer);
+        test(licenseToDrive, ANSI_CYAN);
 
-        Car car = new Car();
-        System.out.println(ANSI_GREEN+"===============================================");
-        System.out.println(ANSI_GREEN+"==I Danmark går Ida og Kirsten til køreprøve!==");
-        System.out.println(ANSI_GREEN+"===============================================");
-        lilleIda.grantDriversLicense();
-        hurtigeKirsten.grantDriversLicense();
+        System.out.println(ANSI_WHITE + "\nLinda Hansen er meget klog og kan godt blive læge\n");
 
+        DoctorsLicense doctorsLicense = new DoctorsLicense(linda.getLastname());
+        doctorTest(doctorsLicense, ANSI_GREEN);
 
-        System.out.println(ANSI_GREEN +"\n==Nu vil de begge prøve at køre i bil!==");
-        car.putInDriversSeat(lilleIda);
-        car.drive();
-        System.out.println(ANSI_GREEN+"==");
-        car.putInDriversSeat(hurtigeKirsten);
-        car.drive();
+    }
 
-        System.out.println(ANSI_GREEN + "\n==Kirsten er lidt af en fartbølle!==");
-        hurtigeKirsten.revokeDriversLicense();
-        car.drive();
+    public static void test(DriversLicense licenseToDrive, String color){
+        System.out.println(ANSI_BLUE+"============Kørekorts TEST===============");
+        System.out.println(color+"har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: " + licenseToDrive.haveLicenseFor(PERSONBIL));
+        System.out.println("Forsøger at give " + licenseToDrive.ownerOfLicense() + " et kørekort.");
+        System.out.println(licenseToDrive.grantLicenseFor(PERSONBIL));
+        if(licenseToDrive.isValid()){
+            System.out.println("\n" + licenseToDrive.ownerOfLicense()+" har et gyldigt kørekort!");
+            System.out.println(licenseToDrive.grantLicenseFor(LASTBIL));
+            System.out.println("har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: " + licenseToDrive.haveLicenseFor(PERSONBIL));
+            System.out.println("har " + licenseToDrive.ownerOfLicense() + " lastbil kørekort?: " + licenseToDrive.haveLicenseFor(LASTBIL));
+            System.out.println(licenseToDrive.revokeLicenseFor(LASTBIL));
+            System.out.println("har " + licenseToDrive.ownerOfLicense() + " personbil kørekort?: " + licenseToDrive.haveLicenseFor(PERSONBIL));
+        } else {
+            System.out.println("\n" + licenseToDrive.ownerOfLicense() + " har ikke et gyldigt kørekort!");
+        }
+        System.out.println(ANSI_RED + "=========Kørekorts TEST SLUT=============");
+    }
 
-        System.out.println(ANSI_GREEN + "\n==Nu tager kirsten til køreprøve igen!==");
-        hurtigeKirsten.grantDriversLicense();
-        car.drive();
+    public static void doctorTest(DoctorsLicense doctorsLicense, String color){
+        System.out.println(ANSI_BLUE+"============DOCTOR TEST===============");
+        System.out.println("kan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: " + doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
+        System.out.println("Forsøger at give " + doctorsLicense.ownerOfLicense() + " et en lægelicense.");
+        System.out.println(doctorsLicense.grantLicenseFor(ALMENPRAKSIS));
+        if(doctorsLicense.isValid()){
+            System.out.println("\n" + doctorsLicense.ownerOfLicense()+" har en gyldig lægelicense!");
+            System.out.println(doctorsLicense.grantLicenseFor(HJERTEOPERATION));
+            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: " + doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
+            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " foretage hjerteoperationer?: " + doctorsLicense.haveLicenseFor(HJERTEOPERATION));
+            System.out.println(doctorsLicense.revokeLicenseFor(HJERTEOPERATION));
+            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " foretage hjerteoperationer?: " + doctorsLicense.haveLicenseFor(HJERTEOPERATION));
+            System.out.println("kan " + doctorsLicense.ownerOfLicense() + " have egen praksis?: " + doctorsLicense.haveLicenseFor(ALMENPRAKSIS));
 
-        System.out.println(ANSI_GREEN + "\n==Nu er der gået et år og Ida går til køreprøve igen!==");
-        lilleIda.happyBirthDay();
-        lilleIda.grantDriversLicense();
-
-        car.putInDriversSeat(lilleIda);
-        car.drive();
-
-
-
-        //I USA:
-
-        System.out.println(ANSI_GREEN +   "\n\n=======================================================================");
-        System.out.println(ANSI_GREEN +   "==I USA kan man også have kørekort, men af to typer, baseret på alder==");
-        System.out.println(ANSI_GREEN +   "=======================================================================");
-
-        Billist roger = new AmerikanskBillist("Roger", "Moore", 49);
-        Billist littleJimmy = new AmerikanskBillist("Jimmy", "Johnson", 20);
-
-        roger.grantDriversLicense();
-        car.putInDriversSeat(roger);
-        car.drive();
-
-        System.out.println(ANSI_GREEN+"==");
-
-        //få ungdomskørekort
-        littleJimmy.grantDriversLicense();
-        car.putInDriversSeat(littleJimmy);
-        car.drive();
-
-        //Jimmy er blevet voksen
-        System.out.println(ANSI_GREEN + "\n==Nu er der gået et år og Jimmy skal til en ny køreprøve for at kunne køre!==");
-        littleJimmy.happyBirthDay();
-        car.putInDriversSeat(littleJimmy);
-        car.drive();
-
-        System.out.println(ANSI_GREEN+"==");
-
-        //få voksenkørekort
-        littleJimmy.grantDriversLicense();
-        car.drive();
-
+        } else {
+            System.out.println("\n" + doctorsLicense.ownerOfLicense() + " er ikke en rigtig læge!");
+        }
+        System.out.println(ANSI_RED + "=========DOCTOR TEST SLUT=============");
     }
 }
