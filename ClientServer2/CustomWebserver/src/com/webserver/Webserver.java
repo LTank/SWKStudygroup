@@ -19,7 +19,7 @@ public class Webserver {
     6. Luk
      */
 
-    static String path = System.getProperty("user.dir") + "/"; // giver roden til projektmappen
+    static String path = System.getProperty("user.dir") + "/ClientServer2/CustomWebserver/"; // giver roden til projektmappen
     public static void main(String[] args) {
 
         try {
