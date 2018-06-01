@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
+</head>
+<body class="container-fluid">
+
+<div class="row justify-content-md-center pt-5">
+
+    <!-- Mydiv is used in our Functional test. -->
+    <h4 name="mydiv">Simpel webapplikation med testing</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-2 offset-md-1 p-1">
+        <div th:if="${session.status == '0'}">
+            <form method="POST" action="/login">
+                <legend>Login</legend>
+                <div class="form-group">
+                    <label for="loginname">Brugernavn:</label>
+                    <input type="text" class="form-control" id="loginname" name="name" value="anna">
+                </div>
+                <div class="form-group">
+                    <label for="loginpassword">Kodeord:</label>
+                    <input type="password" class="form-control" id="loginpassword" name="password" value="123456"/>
+                </div>
+                <button type="submit" class="btn btn-primary" id="loginbutton">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Maincontent is used for our test to check if we are logged in because if login = OK, then session.status = 1 - else 0. -->
+<div id="maincontent" th:if="${session.status == '1'}">
+    <div class="row">
+        <div class="col-md-2 offset-md-1 p-1">
+            <form method="POST" action="/addUser">
+                <legend>Ny bruger</legend>
+                <input type="hidden" class="form-control" name="id" value="1"/>
+                <div class="form-group">
+                    <label for="name">Navn:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="Mogens"/>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Mængde:</label>
+                    <input type="text" class="form-control" id="amount" name="amount" value="25.5"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Tilføj</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-1 p-1">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <th scope="col">Navn</th>
+                    <th scope="col">Mængde</th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${userlist}">
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${#numbers.formatDecimal(user.amount,0,0)}"></td>
+                    </tr>
+                    <tr>
+                        <td>Gennemsnitslig mængde:</td>
+                        <td th:text="${#numbers.formatDecimal(average,0,2)}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
