@@ -46,7 +46,8 @@ public class FuntionalTest {
     }
 
     private WebDriver getWebdriver(){
-        String path = System.getProperty("user.dir")+"/chromedriver.exe";
+        String path = System.getProperty("user.dir")+"/chromedriver.exe"; // Windows
+//        String path = System.getProperty("user.dir")+"/chromedriver"; // Linux
         System.setProperty("webdriver.chrome.driver", path);
         return new ChromeDriver();
     }
