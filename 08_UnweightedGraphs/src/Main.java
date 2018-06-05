@@ -49,11 +49,13 @@ public class Main {
 
         graph.showGraph();
 
+        System.out.println();
 
-        // Manipulating our graph
-//        graph.removeVertex(e);
+//         Manipulating our graph
+        graph.removeVertex(e);
+        graph.showGraph();
 
-//        graph.showNeighbors(c);
+        //graph.showNeighbors(c);
 //
 //        graph.showNeighbors(a);
 //

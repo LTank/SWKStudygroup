@@ -40,11 +40,11 @@ public class MergeSort {
         System.arraycopy(list, 0, first, 0, first.length);
         System.arraycopy(list, first.length, second, 0, second.length);
 
-        //Sort each half recursively
+        //Sort each half recursively (divide)
         mergeSort(first);
         mergeSort(second);
 
-        //Merge both halves together, overwriting to original array
+        //Merge both halves together, overwriting to original array (conquer)
         merge(first, second, list);
         return list;
     }
