@@ -3,10 +3,9 @@ public class FlyweightPatternDemo {
     public static void main(String[] args) {
 
         Circle circle;
-        ShapeFactory sf = new ShapeFactory();
 
         // Prints 20 circles with random choosen colors from array + random X & Y.
-        for (int i = 0; i < 200; ++i) {
+        for (int i = 0; i < 10; ++i) {
             circle = (Circle) ShapeFactory.getCircle(getRandomColor());
             circle.setX(getRandomX());
             circle.setY(getRandomY());

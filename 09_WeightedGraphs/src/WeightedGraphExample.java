@@ -1,7 +1,7 @@
-public class Main {
+public class WeightedGraphExample {
     public static void main(String[] args) {
         Graph graph = new Graph();
-        int numberOfVertices = 10;
+        int numberOfVertices = 5;
         graph.buildMatrix(numberOfVertices);
 
         // Adding edges

@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Producer implements Runnable{
 
-    private Diamond diamonds;
+    private MediatingDiamond diamonds;
 
-    public Producer(Diamond diamonds) {
+    public Producer(MediatingDiamond diamonds) {
         this.diamonds = diamonds;
     }
 

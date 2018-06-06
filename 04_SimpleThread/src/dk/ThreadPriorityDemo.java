@@ -1,6 +1,6 @@
 package dk;
 
-public class TaskThreadDemo {
+public class ThreadPriorityDemo {
     public static void main(String[] args) {
         // Create tasks
         Runnable printA = new PrintChar('a', 1000);

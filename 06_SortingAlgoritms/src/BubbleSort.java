@@ -1,6 +1,41 @@
 // This kode example is taken from https://www.javatpoint.com/bubble-sort-in-java
 public class BubbleSort {
+    public static void main(String[] args) {
+        int[] arr1 = {   2, 6,  12,  3, 5, 1, 7,  4, 5, 6, 4, 3, 5, 6, 2, 1,   6, 102, 392};
+        int[] arr2 = { 222, 26, 553, 25, 1, 7, 4, 15, 6, 4, 3, 5, 6, 2, 1, 6, 102, 392,  12};
+
+
+
+        long startTime = System.nanoTime();
+        bubbleSort(arr1);//sorting array elements using bubble sort
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println();
+        System.out.println("tid: " + duration);
+        System.out.println("==================");
+
+
+        startTime = System.nanoTime();
+        bubbleSort(arr2);//sorting array elements using bubble sort
+        endTime = System.nanoTime();
+
+        duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println();
+        System.out.println("tid: " + duration);
+
+
+
+    }
     static void bubbleSort(int[] arr) {
+
+        System.out.println("Array Before Bubble Sort");
+        for(int i=0; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
+
         int n = arr.length;
         int temp = 0;
         int count = 0;
@@ -22,29 +57,14 @@ public class BubbleSort {
                 }
 
             }
-        } System.out.println("\nSorteringsalgoritmen kører i alt: " + count + " gange\n");
-    }
-    public static void main(String[] args) {
-        int[] arr = { 2, 6, 3, 5, 1, 7, 4, 5, 6, 4, 3, 5, 6, 2, 1, 6, 102, 392, 12};
-
-
-        System.out.println("Array Before Bubble Sort");
-        for(int i=0; i < arr.length; i++){
-            System.out.print(arr[i] + " ");
         }
-        System.out.println();
 
-        long startTime = System.nanoTime();
-        bubbleSort(arr);//sorting array elements using bubble sort
-        long endTime = System.nanoTime();
+        System.out.println("\nSorteringsalgoritmen kører i alt: " + count + " gange\n");
 
         System.out.println("Array After Bubble Sort");
         for(int i=0; i < arr.length; i++){
             System.out.print(arr[i] + " ");
         }
-        long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println();
-        System.out.println("tid: " + duration);
 
     }
 }

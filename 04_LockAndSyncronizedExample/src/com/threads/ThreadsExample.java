@@ -1,6 +1,6 @@
 package com.threads;
 
-public class Main {
+public class ThreadsExample {
 
     public static void main(String[] args) {
         new KontoExample().runExample();

@@ -4,7 +4,7 @@ package com;
 import static com.VehicleTypes.*;
 import static com.MedicalFields.*;
 
-public class Main {
+public class ADTExample {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";

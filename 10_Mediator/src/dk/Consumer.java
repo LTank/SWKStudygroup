@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Consumer implements Runnable {
 
-    private Diamond diamonds;
+    private MediatingDiamond diamonds;
 
-    public Consumer(Diamond diamonds) {
+    public Consumer(MediatingDiamond diamonds) {
         this.diamonds = diamonds;
     }
 

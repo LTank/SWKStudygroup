@@ -1,11 +1,11 @@
 package dk;
 
-public class Main {
+public class MediatorExample {
 
     public static void main(String[] args){
 
         // Our 'trade' object & mediator class
-        Diamond diamonds = new Diamond();
+        MediatingDiamond diamonds = new MediatingDiamond();
 
         // Consumes diamonds
         Consumer consumer = new Consumer(diamonds);

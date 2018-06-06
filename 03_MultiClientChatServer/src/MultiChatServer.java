@@ -19,6 +19,7 @@ public class MultiChatServer {
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Har modtaget klient");
+                System.out.println("Gemmer klient i et hashmap, bruger nøglen fra socket: " + socket.hashCode());
                 socketMap.put(socket, new PrintWriter(socket.getOutputStream(), true));
                 ClientHandler clientHandler = new ClientHandler(socket, this);
                 Thread thread = new Thread(clientHandler);

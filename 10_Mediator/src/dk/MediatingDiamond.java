@@ -1,7 +1,7 @@
 package dk;
 
 // Our Mediator class because Consumer & Producer uses this class to communicate with each other.
-public class Diamond {
+public class MediatingDiamond {
     private int count = 0;
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[34m";

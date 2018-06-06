@@ -1,6 +1,6 @@
 @SuppressWarnings("ALL")
 
-public class Main {
+public class UnweightedGrapExample {
     public static void main(String[] args) {
         GraphUtil graph = new GraphUtil();
 
@@ -23,24 +23,15 @@ public class Main {
         graph.addEdge(a, c);
 
         // Adding edges to b
-        graph.addEdge(b, a); // Dette er det samme som a, b og er derfor redundant
         graph.addEdge(b, c);
         graph.addEdge(b, d);
         graph.addEdge(b, e);
 
         // Adding edges to c
-        graph.addEdge(c, a);
-        graph.addEdge(c, b);
         graph.addEdge(c, e);
 
         // Adding edges to d
-        graph.addEdge(d, b);
         graph.addEdge(d, e);
-
-        // Adding edges to e
-        graph.addEdge(e, b);
-        graph.addEdge(e, c);
-        graph.addEdge(e, d);
 
         // Exploring our graph
 //        graph.isAdjacent(e, a);
@@ -55,7 +46,7 @@ public class Main {
         graph.removeVertex(e);
         graph.showGraph();
 
-        //graph.showNeighbors(c);
+//        graph.showNeighbors(c);
 //
 //        graph.showNeighbors(a);
 //

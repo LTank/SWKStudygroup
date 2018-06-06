@@ -2,7 +2,7 @@ package dk;
 
 // Our Mediator class because Consumer & Producer uses this class to communicate with each other.
 public class Diamond {
-    private int count = 0;
+    private Integer count = 0;
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[34m";
 
@@ -11,11 +11,11 @@ public class Diamond {
     public synchronized void increment() {
         try {
             while (count > 4) {
-                wait(); // Releases and wait for a notify/notifyAll
+                this.wait(); // Releases and wait for a notify/notifyAll
             }
             count = count + 1;
             System.out.println(ANSI_GREEN + "GiveDiamond: " + count + " ");
-            notifyAll(); // Safer than notify, because notifyAll notifies... all and not just one.
+            this.notifyAll(); // Safer than notify, because notifyAll notifies... all and not just one.
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -24,11 +24,11 @@ public class Diamond {
     public synchronized void decrement() {
         try {
             while (count < 2) {
-                wait(); // Waits and listens for notifyAll
+                this.wait();
             }
             count = count - 2;
             System.out.println(ANSI_RED + "TakeDiamond: " + count + " ");
-            notifyAll();
+            this.notifyAll();
         } catch(Exception e) {
             System.out.println(e);
         }
